@@ -1,0 +1,524 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+/* 字体小图标的声明 */
+/* 注意这里fonts放在了CSS文件的上一级文件夹的fonts文件夹里面，所以下面的路径要加../表示上一级路径 */
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?p9tdns');
+    src: url('../fonts/icomoon.eot?p9tdns#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?p9tdns') format('truetype'),
+        url('../fonts/icomoon.woff?p9tdns') format('woff'),
+        url('../fonts/icomoon.svg?p9tdns#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+body {
+    position: relative;
+    Max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    /* height: 3000px; */
+}
+
+.search-index {
+    /* 提高层级不然会被下面浮动的盒子压住 */
+    z-index: 999;
+    display: flex;
+    /* 固定定位的盒子不会随着页面的滚动消失 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 固定定位的盒子需要有宽度 */
+    max-width: 540px;
+    min-width: 320px;
+    width: 100%;
+    /* background-color: pink; */
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.search {
+    position: relative;
+    flex: 1;
+    height: 26px;
+    margin: 8px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    line-height: 24px;
+    padding-left: 25px;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .3);
+}
+
+.search::before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url(../images/sprite.png) no-repeat -60px -280px;
+    background-size: 104px auto;
+}
+
+.user {
+    width: 44px;
+    height: 44px;
+    /* background-color: purple; */
+    font-size: 12px;
+    color: #099fde;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.user::before {
+    /* user添加before伪元素，所以把“我的”挤到下面 */
+    content: "";
+    display: block;
+    height: 23px;
+    width: 23px;
+    margin: 4px auto 0;
+    /* 
+    1.在ps把原来的背景图缩小为原来的一半，但是不要保存
+    2.设置背景图的尺寸适配盒子的大小，这里就是把原来的背景图缩小为原来的一般，在css里面设置，因为手机端会放大2倍，这样得到的还是原图，不会模糊
+    3.测量缩小之后背景图中小图标的位置 设置为精灵图的移动值 注意负号
+    */
+    background: url(../images/sprite.png) no-repeat -60px -195px;
+    /* 把整个背景图片缩小为原来的一半显示 */
+    background-size: 104px 328px;
+}
+
+.goBack {
+    display: none;
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    background: url(../images/back.png) no-repeat;
+    background-size: 38px 38px;
+}
+
+.focus {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 110px;
+    margin: 44px 0 5px 0;
+}
+
+.focus img {
+    /* height: 100%; */
+    width: 100%;
+}
+
+.focus ul {
+    /* overflow: hidden; */
+    width: 500%;
+    /* height: 100%; */
+    margin-left: -100%;
+}
+
+.focus ul li {
+    float: left;
+    /* height: 100%; */
+    width: 20%;
+}
+
+.focus ol {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    margin: 0;
+}
+
+.focus ol li.current {
+    width: 15px;
+    background-color: red;
+}
+
+.focus ol li {
+    float: left;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #fff;
+    margin-left: 3px;
+    border-radius: 3px;
+    transition: all, .3s;
+}
+
+.focus .arrow_left,
+.focus .arrow_right {
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    background-color: rgba(5, 5, 5, 0.3);
+    text-align: center;
+    line-height: 40px;
+    font-family: 'icomoon';
+    color: #fff;
+    font-size: 16px;
+    display: none;
+}
+
+.focus .arrow_left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.focus .arrow_right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.local-nav {
+    height: 64px;
+}
+
+.local-nav ul {
+    display: flex;
+    height: 64px;
+    width: 98%;
+    margin: 0 auto;
+}
+
+.local-nav ul li {
+    flex: 1;
+    background-color: #fff;
+    height: 64px;
+}
+
+.local-nav ul li div {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.local-nav ul li:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.local-nav ul li:nth-child(5) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.local-nav ul li div:nth-child(1) {
+    width: 32px;
+    height: 32px;
+    margin-top: 5px;
+}
+
+.local-nav ul li:nth-child(1) div:nth-child(1) {
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px auto;
+}
+
+.local-nav ul li:nth-child(2) div:nth-child(1) {
+    background: url(../images/localnav_bg.png) no-repeat 0 -32px;
+    background-size: 32px auto;
+}
+
+.local-nav ul li:nth-child(3) div:nth-child(1) {
+    background: url(../images/localnav_bg.png) no-repeat 0 -64px;
+    background-size: 32px auto;
+}
+
+.local-nav ul li:nth-child(4) div:nth-child(1) {
+    background: url(../images/localnav_bg.png) no-repeat 0 -96px;
+    background-size: 32px auto;
+}
+
+.local-nav ul li:nth-child(5) div:nth-child(1) {
+    background: url(../images/localnav_bg.png) no-repeat 0 -128px;
+    background-size: 32px auto;
+}
+
+.nav {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.nav>div {
+    width: 100%;
+    height: 88px;
+    /* background-color: pink; */
+}
+
+.nav2:nth-child(2) {
+    margin: 3px 0 3px 0;
+}
+
+.nav1 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #fff;
+}
+
+.nav1>div {
+    /* flex: 1; */
+    /* background-color: red; */
+    width: 177px;
+}
+
+.nav1 div:nth-child(2),
+.nav1 div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav1 div:nth-child(2) div,
+.nav1 div:nth-child(3) div {
+    /* flex: 1; */
+    width: 100%;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+}
+
+/* 背景颜色设置 */
+
+.nav1 div:nth-child(1) {
+    /* 设置背景颜色从左到右渐变，注意第一个是方向，第二个是起始颜色和相对应的位置，第三个是终止位置和相对应的位置 */
+    background: linear-gradient(to right, #fa5956 0%, #fa6f53 100%);
+}
+
+.nav1 div:nth-child(2) div {
+    background: linear-gradient(to right, #fa6f53 0%, #fa8550 100%);
+}
+
+.nav1 div:nth-child(3) div {
+    background: linear-gradient(to right, #fa8550 0%, #fa9b4d 100%);
+}
+
+.nav2 div:nth-child(1) {
+    /* 设置背景颜色从左到右渐变，注意第一个是方向，第二个是起始颜色和相对应的位置，第三个是终止位置和相对应的位置 */
+    background: linear-gradient(to right, #4b8fed 0%, #4e9eed 100%);
+}
+
+.nav2 div:nth-child(2) div {
+    background: linear-gradient(to right, #4e9eed 0%, #50aded 100%);
+}
+
+.nav2 div:nth-child(3) div {
+    background: linear-gradient(to right, #50aded 0%, #53bbed 100%);
+}
+
+.nav3 div:nth-child(1) {
+    /* 设置背景颜色从左到右渐变，注意第一个是方向，第二个是起始颜色和相对应的位置，第三个是终止位置和相对应的位置 */
+    background: linear-gradient(to right, #34c2aa 0%, #46c88e 100%);
+}
+
+.nav3 div:nth-child(2) div {
+    background: linear-gradient(to right, #46c88e 0%, #59cf73 100%);
+}
+
+.nav3 div:nth-child(3) div {
+    background: linear-gradient(to right, #59cf73 0%, #6cd558 100%);
+}
+
+.nav1 span,
+i {
+    display: block;
+}
+
+.nav1 span {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.nav1 i {
+    width: 44px;
+    height: 33px;
+    background: url(../images/sprite.png) no-repeat 0 -131px;
+    background-size: 104px auto;
+    margin: 14px auto 0;
+}
+
+.nav2 i {
+    background-position: 0 -297px;
+}
+
+.subnav-entry {
+    height: 117px;
+    background-color: #fff;
+}
+
+.subnav1 {
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    color: #333;
+}
+
+.subnav1>div {
+    /* background-color: pink; */
+    height: 58px;
+    width: 100px;
+}
+
+.subnav1 div i,
+.subnav1 div span {
+    display: block;
+}
+
+.subnav1 div i {
+    width: 22px;
+    height: 25px;
+    margin: 10px auto 0;
+    background: url(../images/subnav-bg.png) no-repeat 0 0;
+    background-size: 24px auto;
+}
+
+.subnav1 div span {
+    text-align: center;
+}
+
+.subnav1 div:nth-child(2) i {
+    background-position: 1px -26px;
+}
+
+.subnav1 div:nth-child(3) i {
+    background-position: 1px -56px;
+}
+
+.subnav1 div:nth-child(4) i {
+    background-position: 1px -86px;
+}
+
+.subnav1 div:nth-child(5) i {
+    background-position: 0 -114px;
+}
+
+.subnav2 div:nth-child(1) i {
+    background-position: 1px -140px;
+}
+
+.subnav2 div:nth-child(2) i {
+    background-position: 1px -170px;
+}
+
+.subnav2 div:nth-child(3) i {
+    background-position: 1px -200px;
+}
+
+.subnav2 div:nth-child(4) i {
+    background-position: 0 -224px;
+}
+
+.subnav2 div:nth-child(5) i {
+    background-position: 0 -250px;
+}
+
+.subnav-entrys {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px 0;
+}
+
+.subnav-entrys li {
+    flex: 20%;
+}
+
+.subnav-entrys li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-nav-icon {
+    width: 22px;
+    height: 25px;
+    background: url(../images/subnav-bg.png) no-repeat 0 0;
+    background-size: 24px auto;
+}
+
+.sales-box {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.sales-hd {
+    position: relative;
+    height: 45px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.sales-hd span {
+    position: absolute;
+    text-indent: -999px;
+    overflow: hidden;
+    width: 75px;
+    height: 25px;
+    background: url(../images/hot.png) no-repeat 0 -15px;
+    background-size: 75px auto;
+    margin: 12px 0 0 5px;
+}
+
+.sales-hd a {
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    color: #fff;
+    padding: 5px 20px 5px 10px;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff4f67 0%, #ff6bc5 100%);
+}
+
+.sales-hd a::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+}
+
+.sales-bd .row {
+    display: flex;
+}
+
+.row a {
+    flex: 1;
+}
+
+.row a img {
+    width: 100%;
+}

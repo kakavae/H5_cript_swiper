@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 移动端双击屏幕会有缩放，引擎会等待300ms看看有没有点击以确定是否为双击，方法一可以用禁止缩放来解决，视口标签添加content = "user-scalable=no" -->
+    <!-- 方法二可以自己封装一个click函数 -->
+    <!-- 方法三：fastclick插件 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>携程网首页</title>
+    <!-- 设置视口标签以及引入初始化样式  视口标签是meta -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/animate.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <!-- 返回顶部模块 -->
+    <div class="goBack"></div>
+    <!-- 顶部搜索 -->
+    <div class="search-index">
+        <div class="search">搜索：目的地/酒店/景点/航班号</div>
+        <a href="#" class="user">我 的</a>
+    </div>
+    <!-- 焦点图模块 -->
+    <div class="focus">
+        <ul>
+            <li><img src="upload/focus3.jpg" alt=""></li>
+            <li><img src="upload/focus1.jpg" alt=""></li>
+            <li><img src="upload/focus2.jpg" alt=""></li>
+            <li><img src="upload/focus3.jpg" alt=""></li>
+            <li><img src="upload/focus1.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;"><span class="arrow_left"></span></a>
+        <a href="javascript:;"><span class="arrow_right"></span></a>
+        <!-- 小圆点 -->
+        <ol class="circle">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <!-- local-nav模块 -->
+    <div class="local-nav">
+        <ul>
+            <li>
+                <a href="#">
+                    <div></div>
+                    <div>景点·玩乐</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div></div>
+                    <div>周边游</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div></div>
+                    <div>美食林</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div></div>
+                    <div>一日游</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div></div>
+                    <div>当地攻略</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- nav模块 -->
+    <div class="nav">
+        <div class="nav1">
+            <div class="">
+                <span>酒店</span>
+                <i></i>
+            </div>
+            <div>
+                <div>海外酒店</div>
+                <div>特价酒店</div>
+            </div>
+            <div>
+                <div>团购</div>
+                <div>民宿·客栈</div>
+            </div>
+        </div>
+        <div class="nav1 nav2">
+            <div>
+                <span>机票</span>
+                <i></i>
+            </div>
+            <div>
+                <div>火车票</div>
+                <div>特价机票</div>
+            </div>
+            <div>
+                <div>汽车票·船票</div>
+                <div>专用·租车</div>
+            </div>
+        </div>
+        <div class="nav1 nav3">
+            <div>
+                <span>旅游</span>
+                <i></i>
+            </div>
+            <div>
+                <div>门票</div>
+                <div>目的地攻略</div>
+            </div>
+            <div>
+                <div>邮轮旅行</div>
+                <div>定制旅行</div>
+            </div>
+        </div>
+    </div>
+    <!-- .subnav-entry模块 -->
+    <!-- flex:1 里面也可以写百分比 -->
+    <div class="subnav-entry">
+        <div class="subnav1">
+            <div>
+                <i></i>
+                <span>WiFi电话卡</span>
+            </div>
+            <div>
+                <i></i>
+                <span>保险·签证</span>
+            </div>
+            <div>
+                <i></i>
+                <span>外币兑换</span>
+            </div>
+            <div>
+                <i></i>
+                <span>购物</span>
+            </div>
+            <div>
+                <i></i>
+                <span>当地向导</span>
+            </div>
+        </div>
+        <div class="subnav1 subnav2">
+            <div>
+                <i></i>
+                <span>WiFi电话卡</span>
+            </div>
+            <div>
+                <i></i>
+                <span>保险·签证</span>
+            </div>
+            <div>
+                <i></i>
+                <span>外币兑换</span>
+            </div>
+            <div>
+                <i></i>
+                <span>购物</span>
+            </div>
+            <div>
+                <i></i>
+                <span>当地向导</span>
+            </div>
+        </div>
+    </div>
+    <ul class="subnav-entrys">
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="sub-nav-icon"></span>
+                <span>电话卡</span>
+            </a>
+        </li>
+    </ul>
+    <div class="sales-box">
+        <div class="sales-hd">
+            <span>热门活动</span>
+            <a href="#">获取更多福利</a>
+        </div>
+        <div class="sales-bd">
+            <div class="row">
+                <a href="#"><img src="upload/pic1.jpg" alt=""></a>
+                <a href="#"><img src="upload/pic2.jpg" alt=""></a>
+            </div>
+            <div class="row">
+                <a href="#"><img src="upload/pic3.jpg" alt=""></a>
+                <a href="#"><img src="upload/pic4.jpg" alt=""></a>
+            </div>
+            <div class="row">
+                <a href="#"><img src="upload/pic5.jpg" alt=""></a>
+                <a href="#"><img src="upload/pic6.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
